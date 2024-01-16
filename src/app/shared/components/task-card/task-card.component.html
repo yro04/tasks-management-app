@@ -1,0 +1,44 @@
+<!-- <div class="task-card">
+    <div class="task-header">
+      <h3>{{ task.title }}</h3>
+      <div class="task-actions">
+         <button (click)="completeTask()" class="action-btn">{{ task.published ? 'Reopen' : 'Complete' }}</button> 
+        <button (click)="editTask()" class="action-btn">Edit</button>
+        <button (click)="deleteTask()" class="action-btn">Delete</button>
+      </div>
+    </div>
+    <p>{{ task.description }}</p>
+  </div> -->
+
+
+<!-- task-card.component.html -->
+
+<mat-card class="short-task-card">
+  <div class="task-header">
+    <mat-card-title>{{ task.title }}</mat-card-title>
+    <div class="task-actions">
+      <button mat-icon-button (click)="publishedTask(task)">
+        <mat-icon>{{ task.published ? 'check_circle' : 'check_circle_outline' }}</mat-icon>
+      </button>
+      <button mat-icon-button (click)="toggleEdit(task)">
+        <mat-icon>{{ task.editing ? 'save' : 'edit' }}</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteTask(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+<div *ngIf="task.editing; else descriptionDisplay" class="full-width">
+  <mat-form-field appearance="fill" class="full-width no-bottom-space">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="task.description" class="full-width"></textarea>
+  </mat-form-field>
+</div>
+
+<ng-template #descriptionDisplay>
+  <div *ngFor="let line of task.description | lineBreak">
+    <p [innerHTML]="line"></p>
+  </div>
+</ng-template>
+

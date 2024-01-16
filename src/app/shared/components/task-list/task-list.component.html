@@ -1,0 +1,15 @@
+<mat-card class="task-list-container">
+  <mat-card-content class="center-content">
+    <ng-container *ngIf="tasks; else loadingBlock">
+      <app-task-card *ngFor="let task of tasks"
+                     [task]="task"
+                     (complete)="completeTask(task)"
+                     (edit)="editTask(task)"
+                     (delete)="deleteTask(task)"
+                     class="app-task-card">
+      </app-task-card>
+    </ng-container>
+    <ng-template #loadingBlock>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

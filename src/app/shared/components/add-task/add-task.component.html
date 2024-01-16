@@ -1,0 +1,56 @@
+<div>
+  <div fxLayout="column" fxLayoutAlign="start start" fxFill>
+    <div fxFlex="auto" fxFlexAlign="start" fxFill>
+      <mat-icon class="close-icon" (click)="closeModal()">close</mat-icon>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon>add_circle</mat-icon>
+        <h2 class="smr-caption--lg">Add Task</h2>
+      </div>
+    </div>
+    <div>
+      <form [formGroup]="newTaskForm" (ngSubmit)="saveTask()">
+        <mat-form-field *ngIf="!disabled">
+          <input matInput formControlName="id" placeholder="ID" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title" />
+          <mat-error *ngIf="newTaskForm.get('title')!.hasError('minlength')">
+            Title must be at least 5 characters long.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Description"
+          ></textarea>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="published">Published</mat-checkbox>
+
+        <div>
+          <div fxFlex="70" fxFlex="100">
+            <button
+              type="button"
+              class="button--action"
+              mat-button
+              (click)="closeModal()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="button--action"
+              mat-stroked-button
+              color="accent"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

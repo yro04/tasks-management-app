@@ -1,0 +1,21 @@
+div {
+  display: grid;
+  padding: 1rem;
+}
+
+.close-icon {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+mat-icon {
+  margin-right: 0.5rem;
+}

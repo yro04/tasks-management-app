@@ -1,0 +1,13 @@
+/* Add this to your global styles or component-specific styles */
+
+.center-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    justify-content: center;
+  }
+  
+  .app-task-card {
+    margin: 10px; /* Adjust the margin to control the space between cards */
+    min-width: 200px; /* Adjust the minimum width of each card */
+  }
+  
